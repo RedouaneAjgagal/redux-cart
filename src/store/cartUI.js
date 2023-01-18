@@ -17,5 +17,25 @@ const cartUiSlice = createSlice({
         },
     }
 });
+
+export const sendCartData = (cartReducer) => {
+    return async (dispatch) => {
+        dispatch(cartUiAction.status({ status: 'Pending', title: 'Sending', message: 'Sending data...' }));
+        const sendRequest = async () => {
+            const response = await fetch('https://react-http-ae2f9-default-rtdb.europe-west1.firebasedatabase.app/cart.json', {
+                method: 'PUT',
+                body: JSON.stringify(cartReducer)
+            });
+            if (!response.ok) throw new Error('Something went wrong!');
+        }
+        try {
+            await sendRequest();
+            dispatch(cartUiAction.status({ status: 'success', title: 'Succeed!', message: 'Sent cart data successfully' }));
+        } catch (error) {
+            dispatch(cartUiAction.status({ status: 'error', title: 'Error', message: 'Sending cart data failed!' }));
+        }
+    }
+}
+
 export const cartUiAction = cartUiSlice.actions;
 export default cartUiSlice.reducer;
