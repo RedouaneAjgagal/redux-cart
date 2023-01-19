@@ -8,7 +8,7 @@ const Cart = (props) => {
   const cartMeals = items.map((item) => {
     return <CartItem key={item.id} item={{ title: item.title, price: item.price, quantity: item.amount, id: item.id }} />
   })
-  const totalPrice = `Total: $${totalAmount.toFixed(2)}`
+  const totalPrice = `Total: $${totalAmount}`
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>

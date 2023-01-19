@@ -9,7 +9,7 @@ const ProductItem = (props) => {
   const addItemHandler = () => {
     dispatch(cartAction.addItem({
       item: {
-        title, price, description, id, amount: 1
+        title, price: Number(price), description, id, amount: 1
       }
     }))
   }
@@ -18,7 +18,7 @@ const ProductItem = (props) => {
       <Card>
         <header>
           <h3>{title}</h3>
-          <div className={classes.price}>${price.toFixed(2)}</div>
+          <div className={classes.price}>${price}</div>
         </header>
         <p>{description}</p>
         <div className={classes.actions}>

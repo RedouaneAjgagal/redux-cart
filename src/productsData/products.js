@@ -9,13 +9,13 @@ export const products = [
         id: 2,
         title: 'Couscous',
         description: 'Cousous yummy moroccan food',
-        price: 10.95
+        price: 10.55
     },
     {
         id: 3,
         title: 'Tea',
         description: 'Tea yummy moroccan food',
-        price: 5.5
+        price: 5.99
     },
     {
         id: 4,
