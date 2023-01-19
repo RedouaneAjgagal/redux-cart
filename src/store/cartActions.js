@@ -11,7 +11,10 @@ export const fetchCartData = () => {
         }
         try {
             const cartData = await sendRequest();
-            dispatch(cartAction.replaceItems(cartData));
+            dispatch(cartAction.replaceItems({
+                ...cartData,
+                items: cartData.items || []
+            }));
         } catch (error) {
             dispatch(cartUiAction.status({ status: 'error', title: 'Error', message: error.message }));
         }
